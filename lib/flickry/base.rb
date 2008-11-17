@@ -4,6 +4,14 @@ module Flickry
       super(*args)
     end
     
+    def attributes
+      attrs = {}
+      each_pair do |m,v|
+        attrs[m] = v
+      end
+      attrs
+    end
+    
     protected
   
     def extract_attrs_into_substructs!(src, mapping, default =  nil)
