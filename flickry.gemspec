@@ -1,12 +1,13 @@
 Gem::Specification.new do |s|
   s.name     = "flickry"
-  s.version  = "0.1.1"
+  s.version  = "0.1.2"
   s.date     = "2008-11-16"
   s.summary  = "Friendlier interface to flickr API, uses flickraw underneath"
   s.email    = "jake@wideopenspac.es"
   s.homepage = "http://github.com/wideopenspaces/flickry"
+  s.rubyforge_project = "flickry"
   s.description = "Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!"
-  s.has_rdoc = false
+  s.has_rdoc = true
   s.authors  = ["Jacob Stetser"]
   s.files    = ["MIT-LICENSE",
     "README",
