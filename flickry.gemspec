@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = "flickry"
-  s.version  = "0.1.2"
+  s.version  = "0.1.3"
   s.date     = "2008-11-16"
   s.summary  = "Friendlier interface to flickr API, uses flickraw underneath"
   s.email    = "jake@wideopenspac.es"
