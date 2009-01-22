@@ -3,9 +3,10 @@ module Flickry
     def initialize(flickr_id)
       super(nil)
       foto = flickr.photos.getInfo(:photo_id => flickr_id)
+      self.raw_photo = foto
       self.photo_id = flickr_id
 
-      extract_attrs!(foto, [:comments, :dateuploaded, :description, :farm, :id, :isfavorite, :license,
+      extract_attrs!(foto, [:dateuploaded, :description, :farm, :id, :isfavorite, :license,
         :media, :notes, :originalformat, :originalsecret, :rotation, :secret, :server, :tags,
         :title, :urls])
       extract_attrs_into_substructs!(foto, {
@@ -29,7 +30,7 @@ module Flickry
     def comments
       return @comments if @comments
       
-      if foto.comments.to_i == 0
+      if raw_photo.comments.to_i == 0
         @comments = []
       else
         @comments = []

@@ -2,9 +2,17 @@ module Flickry
   class Comment < Flickry::Base
     def initialize(comment)
       super(nil)
-      extract_attrs!(comment, [:id, :authorname, :datecreate, :permalink])
+      extract_attrs!(comment, [:fid, :authorname, :datecreate, :permalink])
       self.content = comment.to_s
       self.author_id = comment.author
+    end
+    
+    def comment_id
+      self.fid
+    end
+    
+    def to_s
+      self.content
     end
     
     # Clean permalink
