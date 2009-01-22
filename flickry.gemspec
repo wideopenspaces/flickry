@@ -2,14 +2,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{flickry}
-  s.version = "0.0.0"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jacob Stetser"]
   s.date = %q{2009-01-21}
   s.description = %q{Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!}
   s.email = %q{jake@wideopenspac.es}
-  s.files = ["lib/flickry", "lib/flickry/base.rb", "lib/flickry/location.rb", "lib/flickry/person.rb", "lib/flickry/photo.rb", "lib/flickry/size.rb", "lib/flickry/sizes.rb", "lib/flickry.rb", "lib/super_struct.rb", "test/flickry_test.rb", "test/test_helper.rb"]
+  s.files = ["VERSION.yml", "lib/flickry", "lib/flickry/base.rb", "lib/flickry/comment.rb", "lib/flickry/location.rb", "lib/flickry/person.rb", "lib/flickry/photo.rb", "lib/flickry/size.rb", "lib/flickry/sizes.rb", "lib/flickry.rb", "lib/super_struct.rb", "test/flickry_test.rb", "test/test_helper.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/wideopenspaces/flickry}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
