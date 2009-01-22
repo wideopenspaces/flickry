@@ -12,7 +12,7 @@ begin
     s.homepage = "http://github.com/wideopenspaces/flickry"
     s.description = "Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!"
     s.authors  = ["Jacob Stetser"]
-    s.add_dependency("flickraw", [" 0.4.5"])
+    s.add_dependency("wideopenspaces-flickraw",[">= 0.5.2"])
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
