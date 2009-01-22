@@ -13,9 +13,5 @@ module Flickry
       clean(self.source)
     end
     
-    protected
-    def clean(text)
-      text.gsub(' ','').gsub("\\",'')
-    end
   end
 end

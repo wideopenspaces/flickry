@@ -39,5 +39,9 @@ module Flickry
       end
       return str
     end
+    
+    def clean(text)
+      text.gsub(' ','').gsub("\\",'')
+    end
   end
 end

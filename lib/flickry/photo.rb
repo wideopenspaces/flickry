@@ -17,9 +17,29 @@ module Flickry
       })
       self.location = Flickry::Location.new(foto.respond_to?(:location) ? foto.location : nil)
       self.owner    = Flickry::Person.new(foto.respond_to?(:owner) ? foto.owner : nil)
-      
-      self.sizes    = Flickry::Sizes.new(flickr.photos.getSizes(:photo_id => self.photo_id))
+        
     end
+
+    # Lazily fetches the photo's sizes when called, memoizes so later calls are faster...
+    def sizes
+      @sizes ||= Flickry::Sizes.new(flickr.photos.getSizes(:photo_id => self.photo_id))
+    end
+    
+    # Lazily fetches the photo's comments when called, memoizes so later calls are faster...
+    def comments
+      return @comments if @comments
+      
+      if foto.comments.to_i == 0
+        @comments = []
+      else
+        @comments = []
+        flickr_comments = flickr.photos.comments.getList(:photo_id => self.photo_id)
+        flickr_comments.each do |comment|
+          @comments << Flickry::Comment.new(comment)
+        end
+      end
+      return @comments
+    end     
     
     def visible_to_family?
       self.visibility.isfamily == 1
@@ -32,20 +52,6 @@ module Flickry
     def visible_to_public?
       self.visibility.ispublic == 1
     end
-
-    def to_flickr_photo
-      { :secret => self.secret,
-        :originalsecret => self.originalsecret,
-        :farm => self.farm,
-        :server => self.server,
-        :content_type => self.originalformat,
-        :content => self.description,
-        :created_at => Time.parse(self.dates.taken) }
-    end
-
-    def to_story
-      return {:title => self.title, :slug => self.photo_id, :published_at => self.dates.taken }
-    end
-
+    
   end
 end
