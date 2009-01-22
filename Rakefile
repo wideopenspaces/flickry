@@ -1,23 +1,41 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
+require 'rcov/rcovtask'
 
-desc 'Default: run unit tests.'
-task :default => :test
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name     = "flickry"
+    s.summary  = "Friendlier interface to flickr API, uses flickraw underneath"
+    s.email    = "jake@wideopenspac.es"
+    s.homepage = "http://github.com/wideopenspaces/flickry"
+    s.description = "Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!"
+    s.authors  = ["Jacob Stetser"]
+    s.add_dependency("flickraw", [" 0.4.5"])
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
 
-desc 'Test the flickry plugin.'
-Rake::TestTask.new(:test) do |t|
+Rake::TestTask.new do |t|
   t.libs << 'lib'
-  t.libs << 'test'
   t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
+end
+
+Rake::RDocTask.new do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'flickry'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+Rcov::RcovTask.new do |t|
+  t.libs << 'test'
+  t.test_files = FileList['test/**/*_test.rb']
   t.verbose = true
 end
 
-desc 'Generate documentation for the flickry plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Flickry'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+task :default => :rcov

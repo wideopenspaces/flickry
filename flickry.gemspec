@@ -1,35 +1,32 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
-  s.name     = "flickry"
-  s.version  = "0.1.3"
-  s.date     = "2008-11-16"
-  s.summary  = "Friendlier interface to flickr API, uses flickraw underneath"
-  s.email    = "jake@wideopenspac.es"
-  s.homepage = "http://github.com/wideopenspaces/flickry"
-  s.rubyforge_project = "flickry"
-  s.description = "Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!"
+  s.name = %q{flickry}
+  s.version = "0.0.0"
+
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.authors = ["Jacob Stetser"]
+  s.date = %q{2009-01-21}
+  s.description = %q{Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!}
+  s.email = %q{jake@wideopenspac.es}
+  s.files = ["lib/flickry", "lib/flickry/base.rb", "lib/flickry/location.rb", "lib/flickry/person.rb", "lib/flickry/photo.rb", "lib/flickry/size.rb", "lib/flickry/sizes.rb", "lib/flickry.rb", "lib/super_struct.rb", "test/flickry_test.rb", "test/test_helper.rb"]
   s.has_rdoc = true
-  s.authors  = ["Jacob Stetser"]
-  s.files    = ["MIT-LICENSE",
-    "README",
-    "Rakefile",
-    "flickry.gemspec",
-    "init.rb",
-    "install.rb",
-    "lib/flickry",
-    "lib/flickry/base.rb",
-    "lib/flickry/location.rb",
-    "lib/flickry/person.rb",
-    "lib/flickry/photo.rb",
-    "lib/flickry/size.rb",
-    "lib/flickry/sizes.rb",
-    "lib/flickry.rb",
-    "lib/super_struct.rb",
-    "rails/init.rb",
-    "tasks/flickry_tasks.rake",
-    "uninstall.rb"]
-  s.test_files = ["test/flickry_test.rb",
-    "test/test_helper.rb"]
-  s.rdoc_options = []
-  s.extra_rdoc_files = []
-  s.add_dependency("flickraw", [" 0.4.5"])
+  s.homepage = %q{http://github.com/wideopenspaces/flickry}
+  s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = %q{1.3.1}
+  s.summary = %q{Friendlier interface to flickr API, uses flickraw underneath}
+
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 2
+
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<flickraw>, ["= 0.4.5"])
+    else
+      s.add_dependency(%q<flickraw>, ["= 0.4.5"])
+    end
+  else
+    s.add_dependency(%q<flickraw>, ["= 0.4.5"])
+  end
 end
