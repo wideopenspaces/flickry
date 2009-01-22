@@ -1,39 +1,28 @@
 module Flickry
-  class Comment < Flickry::Base
+  class Comment < String
+    attr_reader :comment_id, :author_id, :authorname, :datecreate, :permalink
     def initialize(comment)
-      super(nil)
+      super(comment.to_s)
       @comment_id = comment.id
-      extract_attrs!(comment, [:authorname, :datecreate, :permalink])
-      self.content = comment.to_s
-      self.author_id = comment.author
-    end
-    
-    def comment_id
-      @comment_id
-    end
-    
-    def to_s
-      self.content
-    end
-    
-    # Clean permalink
-    def to_url
-      clean(self.permalink)
+      @author_id = comment.author
+      @authorname = comment.authorname
+      @datecreate = comment.datecreate
+      @permalink = comment.permalink
     end
     
     # datecreate converted into Time object
     def created_at
-      Time.at(self.datecreate.to_i)
+      Time.at(@datecreate.to_i)
     end
     
     # Get a Person record for the author_id
     def author
-      Flickry::Person.find(self.author_id)
+      Flickry::Person.find(@author_id)
     end
     
     # name = authornane
     def name
-      self.authorname
+      @authorname
     end
   end
 end

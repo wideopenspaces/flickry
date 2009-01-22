@@ -18,7 +18,11 @@ module Flickry
       })
       self.location = Flickry::Location.new(foto.respond_to?(:location) ? foto.location : nil)
       self.owner    = Flickry::Person.new(foto.respond_to?(:owner) ? foto.owner : nil)
-        
+      
+      _tags = self.tags.dup
+      self.tags = _tags.collect do |t|
+        Flickry::Tag.new(t)
+      end
     end
 
     # Lazily fetches the photo's sizes when called, memoizes so later calls are faster...
@@ -41,6 +45,11 @@ module Flickry
       end
       return @comments
     end     
+    
+    # Join tags into a single string 
+    def tag_list(separator = ', ')
+      self.tags.join(separator)
+    end
     
     def visible_to_family?
       self.visibility.isfamily == 1

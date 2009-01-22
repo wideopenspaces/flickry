@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-01-21}
   s.description = %q{Interface to Flickr API to make working with API responses safer and easier. DO NOT USE ME YET!}
   s.email = %q{jake@wideopenspac.es}
-  s.files = ["VERSION.yml", "lib/flickry", "lib/flickry/base.rb", "lib/flickry/comment.rb", "lib/flickry/location.rb", "lib/flickry/person.rb", "lib/flickry/photo.rb", "lib/flickry/size.rb", "lib/flickry/sizes.rb", "lib/flickry.rb", "lib/super_struct.rb", "test/flickry_test.rb", "test/test_helper.rb"]
+  s.files = ["VERSION.yml", "lib/flickry", "lib/flickry/base.rb", "lib/flickry/comment.rb", "lib/flickry/location.rb", "lib/flickry/person.rb", "lib/flickry/photo.rb", "lib/flickry/place.rb", "lib/flickry/size.rb", "lib/flickry/sizes.rb", "lib/flickry/tag.rb", "lib/flickry.rb", "lib/super_struct.rb", "test/flickry_test.rb", "test/test_helper.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/wideopenspaces/flickry}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
