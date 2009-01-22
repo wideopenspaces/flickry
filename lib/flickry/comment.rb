@@ -2,13 +2,14 @@ module Flickry
   class Comment < Flickry::Base
     def initialize(comment)
       super(nil)
-      extract_attrs!(comment, [:fid, :authorname, :datecreate, :permalink])
+      @comment_id = comment.id
+      extract_attrs!(comment, [:authorname, :datecreate, :permalink])
       self.content = comment.to_s
       self.author_id = comment.author
     end
     
     def comment_id
-      self.fid
+      @comment_id
     end
     
     def to_s
